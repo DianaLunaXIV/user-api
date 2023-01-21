@@ -49,23 +49,23 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getById(@PathVariable Integer id) {
+    public List<User> getById(@PathVariable Integer id) {
         Optional<User> userByIdOptional = userRepository.findUserById(id);
         if (userByIdOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(404), "User not found by given ID.");
         }
 
-        return userByIdOptional.get();
+        return List.of(userByIdOptional.get());
     }
 
     @GetMapping("/full-name")
-    public @ResponseBody User getByFullName(@RequestParam String firstName, @RequestParam String lastName) {
+    public @ResponseBody List<User> getByFullName(@RequestParam String firstName, @RequestParam String lastName) {
         Optional<User> userByFullName = userRepository.findUserByFullName(firstName, lastName);
         if (userByFullName.isEmpty()) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(404), "User not found by given names.");
         }
 
-        return userByFullName.get();
+        return List.of(userByFullName.get());
     }
 
 
