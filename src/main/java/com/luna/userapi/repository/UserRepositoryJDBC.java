@@ -2,6 +2,7 @@ package com.luna.userapi.repository;
 
 import com.luna.userapi.models.User;
 import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,7 +26,17 @@ public class UserRepositoryJDBC implements UserRepository {
 
     @Override
     public List<User> findUsersByProfession(String profession) {
-        return null;
+        try {
+            List<User> found = namedParameterJdbcTemplate.query(
+                "SELECT * FROM users WHERE profession = :profession",
+                    Map.of("profession", profession),
+                    new DataClassRowMapper<>(User.class)
+            );
+            return found;
+        } catch (DataAccessException e) {
+            return Collections.emptyList();
+        }
+
     }
 
     @Override
