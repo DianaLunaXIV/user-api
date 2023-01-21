@@ -28,7 +28,7 @@ public class UserRepositoryJDBC implements UserRepository {
     public List<User> findUsersByProfession(String profession) {
         try {
             List<User> found = namedParameterJdbcTemplate.query(
-                "SELECT * FROM users WHERE profession = :profession",
+                "SELECT * FROM users WHERE profession LIKE '%" + profession.toLowerCase() + "%'",
                     Map.of("profession", profession),
                     new DataClassRowMapper<>(User.class)
             );
