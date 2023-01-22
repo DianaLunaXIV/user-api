@@ -1,13 +1,16 @@
 import React from "react";
 import UserCard from "../UserCard";
 
+const UsersContainer = ({ usersList }) => {
+  return (
+    <div className="userContainer">
+      {usersList.length > 0 ? (
+        usersList.map((user) => <UserCard user={user} />)
+      ) : (
+        <p>Users go here</p>
+      )}
+    </div>
+  );
+};
 
-const UsersContainer = ({usersList}) => {
-    return (
-        <div className="userContainer">
-            {usersList.length > 0 ? usersList.map(user => <UserCard user={user}/>) : <p>Users go here</p>}
-        </div>
-    )
-}
-
-export default UsersContainer
+export default UsersContainer;
