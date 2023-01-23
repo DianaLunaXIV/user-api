@@ -2,7 +2,7 @@ import React from "react";
 
 const UserCard = ({ user }) => {
   return (
-    <div className="userCard">
+    <div className="userCard" key={user.id}>
       <h1>
         {user.firstName} {user.lastName}
       </h1>
