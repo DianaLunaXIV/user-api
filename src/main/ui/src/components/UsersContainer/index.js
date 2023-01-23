@@ -7,7 +7,7 @@ const UsersContainer = ({ usersList }) => {
       {usersList.length > 0 ? (
         usersList.map((user) => <UserCard user={user} />)
       ) : (
-        <p>Users go here</p>
+        <p>Users will be displayed here</p>
       )}
     </div>
   );

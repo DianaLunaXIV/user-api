@@ -16,7 +16,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "devserver": "cd ../../../ && ./gradlew clean build bootRun"
+    "devserver": "cd ../../../ && ./gradlew clean build bootRun",
+    "dev": "concurrently --kill-others  \"npm start\" & \"npm run devserver\""
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }

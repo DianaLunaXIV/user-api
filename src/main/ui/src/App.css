@@ -11,6 +11,8 @@
 
 .userContainer {
   display: block;
+  margin-top: 2rem;
+  border-top: dashed white 2px;
 }
 
 .userCard {
